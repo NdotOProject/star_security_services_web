@@ -32,7 +32,7 @@ export class Endpoint {
   constructor(group, name, url) {
     this.group = group;
     this.name = name;
-    this.url = `/${url.trim()}`;
+    this.url = url.trim();
   }
 
   registerHttpClient(client) {
@@ -40,26 +40,33 @@ export class Endpoint {
     return this;
   }
 
-  get({ pathParams = {}, config = {} }) {
+  get(options = { pathParams: {}, config: {} }) {
+    if (options === undefined) {
+      return this.httpClient.get(this.url);
+    }
+
     let url = this.url;
-    const paramKeys = Object.keys(pathParams);
 
-    paramKeys.forEach((key) => {
-      if (url.includes(key)) {
-        url = url.replace(`:${key}`, pathParams[key]);
-      }
-    });
+    if (options.pathParams !== undefined) {
+      const paramKeys = Object.keys(options.pathParams);
 
-    return this.httpClient.get(url, config);
+      paramKeys.forEach((key) => {
+        if (url.includes(key)) {
+          url = url.replace(`:${key}`, options.pathParams[key]);
+        }
+      });
+    }
+
+    return this.httpClient.get(url, options.config ?? {});
   }
 }
 
 const httpClient = new HttpClient({
-  baseURL: "https://jsonplaceholder.typicode.com/",
+  baseURL: "https://localhost:44360/api/",
   endpoints: [
-    new Endpoint("posts", "get_comments", "/:id/comments"),
-    new Endpoint("posts", "get_all_posts", "/"),
-    new Endpoint("comments", "get_all_comments", "/"),
+    new Endpoint("services", "list", "/services"),
+    new Endpoint("services", "detail", "/services/:id"),
+    new Endpoint("recruitments", "list", "/recruitments"),
   ],
 });
 

@@ -1,0 +1,34 @@
+.about-us-container {
+    width: 100%;
+    margin-top: var(--header-height);
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(180, 180, 180, 0.1);
+    padding: 20px;
+}
+
+.about-us-container .title-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.about-us-container .title-container span {
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.about-us-container .title-container .company-name-highlight {
+    font-weight: 900;
+    font-size: 50px;
+    text-decoration: underline;
+} 
+
+.about-us-container .company-description {
+    font-size: 14px;
+}
+
+.about-us-container .company-image {
+    width: 100%;
+    height: 100%;
+}

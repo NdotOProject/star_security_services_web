@@ -4,3 +4,7 @@
   box-shadow: 0 3px 5px rgba(90, 90, 90, .5);
   padding: 10px 0 10px 0;
 }
+
+.nav-link.active {
+  font-weight: 700;
+}

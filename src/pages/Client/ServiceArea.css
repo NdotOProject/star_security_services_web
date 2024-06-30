@@ -1,6 +1,6 @@
 .service-area {
     width: 100%;
-    height: 100vh;
+    height: fit-content;
 }
 
 .service-area .title-container {
@@ -14,4 +14,37 @@
 .service-area .title-container span {
     font-size: 40px;
     font-weight: 700;
+}
+
+.service-area .service-container {
+    padding-top: 20px;
+}
+
+.service-area .service-container .service-card {
+    overflow: hidden;
+    margin: 0;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.service-area .service-container .service-card .content {
+    padding: 5px;
+    border-radius: 10px;
+    background-color: rgba(200, 200, 200, 0.5);
+    box-shadow: 0 2.5px 5px rgba(90, 90, 90, 0.6);
+}
+
+.service-area .service-container .service-card .content img {
+    height: 250px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.service-area .service-container .service-card .content .service-name {
+    width: 100%;
+    padding: 5px 0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
 }

@@ -10,7 +10,6 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-router-dom";
 //
@@ -29,46 +28,12 @@ const styleClasses = {
   nav: clsx("justify-content-end", "flex-grow-1", "pe-3"),
 };
 
-const sidebarId = "AppSidebar@19091872673";
-const offcanvasNavLabelId = "Sidebar@NavLabel@01983625734";
-
-function ServiceDropdownList() {
-  const [services, setServices] = useState([{ id: 1, name: "Service 1" }]);
-
-  return (
-    <NavDropdown title="Services">
-      {services.map((service, index) => {
-        return (
-          <NavDropdown.Item
-            key={`NavDropdown.Item.${index}@Service.Id(${service.id})`}
-          >
-            {service.name}
-          </NavDropdown.Item>
-        );
-      })}
-    </NavDropdown>
-  );
-}
-
-function SearchForm() {
-  return (
-    <Form className="d-flex">
-      {/*  */}
-      <Form.Control
-        type="search"
-        placeholder="Search"
-        className="me-2"
-        aria-label="Search"
-      />
-      {/*  */}
-      <Button variant="outline-success">Search</Button>
-    </Form>
-  );
-}
-
-function Header(props, ref) {
+export default forwardRef(function Header(props, ref) {
   const expand = "md";
+  const sidebarId = "AppSidebar@19091872673";
+  const offcanvasNavLabelId = "Sidebar@NavLabel@01983625734";
 
+  const [activeLink, setActiveLink] = useState("home");
   const navbarRef = useRef();
 
   useImperativeHandle(
@@ -111,23 +76,50 @@ function Header(props, ref) {
           <Offcanvas.Body>
             <Nav className={styleClasses.nav}>
               {/*  */}
-              <Nav.Link as={Link} to={links.home}>
+              <Nav.Link
+                href="#home"
+                onClick={() => {
+                  setActiveLink("home");
+                }}
+                active={activeLink === "home"}
+              >
                 Home
               </Nav.Link>
               {/*  */}
-              <ServiceDropdownList />
+              <Nav.Link
+                href="#services"
+                onClick={() => {
+                  setActiveLink("services");
+                }}
+                active={activeLink === "services"}
+              >
+                Services
+              </Nav.Link>
               {/*  */}
-              <Nav.Link as={Link} href="#action2">
+              <Nav.Link
+                href="#about-us"
+                onClick={() => {
+                  setActiveLink("about-us");
+                }}
+                active={activeLink === "about-us"}
+              >
                 About us
               </Nav.Link>
+              {/*  */}
+              <Nav.Link
+                as={Link}
+                to={routes.client.recruitmentNews}
+                onClick={() => {
+                  setActiveLink("recruitment-news");
+                }}
+                active={activeLink === "recruitment-news"}
+              >
+                Recruitment News
+              </Nav.Link>
             </Nav>
-            {/*  */}
-            <SearchForm />
           </Offcanvas.Body>
         </Navbar.Offcanvas>
       </Container>
     </Navbar>
   );
-}
-
-export default forwardRef(Header);
+});

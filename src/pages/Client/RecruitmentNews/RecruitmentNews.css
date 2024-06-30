@@ -1,0 +1,28 @@
+.page-container {
+    margin-top: var(--header-height);
+    height: calc(100vh - var(--header-height));
+    padding-bottom: 10px;
+}
+
+.page-container .container {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.page-container .empty-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.page-container .news-header button {
+    flex-direction: column;
+    align-items: start;
+}
+
+.page-container .news-header button .news-title {
+    font-size: 20px;
+    font-weight: 700;
+}

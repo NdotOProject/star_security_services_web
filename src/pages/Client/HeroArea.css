@@ -1,6 +1,12 @@
+.hero-area-container {
+    padding-top: var(--header-height);
+    width: 100%;
+    height: 100vh;
+}
+
 .hero-area {
     --shadow-color: rgba(30, 40, 30, 0.5);
-    --hero-bg-color: rgba(250, 250, 250, 0.7);
+    --hero-bg-color: rgba(210, 210, 210, 0.3);
 
     position: relative;
     display: flex;

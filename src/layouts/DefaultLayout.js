@@ -18,7 +18,6 @@ export default function DefaultLayout({ children }) {
       <div
         style={{
           "--header-height": `${headerHeight}px`,
-          marginTop: headerHeight,
         }}
       >
         {children}

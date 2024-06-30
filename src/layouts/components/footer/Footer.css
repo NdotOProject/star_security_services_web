@@ -1,0 +1,8 @@
+.footer-container {
+    background-color: rgba(180, 180, 180, 0.3);
+    padding-top: 20px;
+}
+
+.footer-container .footer-icon {
+    margin: 5px;
+}
