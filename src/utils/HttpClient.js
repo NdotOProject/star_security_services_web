@@ -59,6 +59,26 @@ export class Endpoint {
 
     return this.httpClient.get(url, options.config ?? {});
   }
+
+  post(options = { pathParams: {}, body: {}, config: {} }) {
+    let url = this.url;
+
+    if (options.pathParams !== undefined) {
+      const paramKeys = Object.keys(options.pathParams);
+
+      paramKeys.forEach((key) => {
+        if (url.includes(key)) {
+          url = url.replace(`:${key}`, options.pathParams[key]);
+        }
+      });
+    }
+
+    return this.httpClient.post(url, options.body ?? {}, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
 }
 
 const httpClient = new HttpClient({
@@ -66,7 +86,13 @@ const httpClient = new HttpClient({
   endpoints: [
     new Endpoint("services", "list", "/services"),
     new Endpoint("services", "detail", "/services/:id"),
+    new Endpoint("auth", "login", "/auth/login"),
     new Endpoint("recruitments", "list", "/recruitments"),
+    new Endpoint("recruitments", "single", "/recruitments/:id"),
+    new Endpoint("employees", "list", "/employees"),
+    new Endpoint("employees", "single", "/employees/:id"),
+    new Endpoint("clients", "list", "/clients"),
+    new Endpoint("clients", "single", "/clients/:id"),
   ],
 });
 

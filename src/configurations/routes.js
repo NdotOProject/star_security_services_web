@@ -7,6 +7,9 @@ const routes = {
   admin: {
     home: "/admin",
     login: "/login",
+    employees: "/admin/employees",
+    clients: "/admin/clients",
+    recruitmentNews: "/admin/recruitmentNews",
   },
 };
 

@@ -1,5 +1,10 @@
 import React from "react";
+import Authenticated from "../Authenticated";
 
 export default function EmployeeList() {
-  return <div>EmployeeList</div>;
+  return (
+    <Authenticated>
+      <div>EmployeeList</div>
+    </Authenticated>
+  );
 }

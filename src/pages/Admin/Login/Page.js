@@ -1,10 +1,14 @@
 import React, { useRef, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import clsx from "clsx";
 
 import Logo from "../../../components/logo/Logo";
 import Icons from "../../../components/icons/Icons";
+
+import httpClient from "../../../utils/HttpClient";
+
+import routers from "../../../configurations/routes";
 
 import "./Login.css";
 
@@ -24,6 +28,8 @@ const styleClasses = {
 };
 
 export default function Login() {
+  const [redirect, setRedirect] = useState(false);
+
   const [code, setCode] = useState("");
   const [password, setPassword] = useState("");
 
@@ -50,9 +56,31 @@ export default function Login() {
     } else {
       setPasswordError("");
     }
+
+    httpClient.endpoints.auth.login
+      .post({
+        body: {
+          code,
+          password,
+        },
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          setRedirect(true);
+
+          localStorage.setItem("role", response.data.role.id);
+        } else {
+        }
+      })
+      .catch((err) => {
+        setCodeError("Code is incorrect");
+        setPasswordError("Password is incorrect");
+      });
   };
 
-  return (
+  return redirect ? (
+    <Navigate to={routers.admin.home} replace={true} />
+  ) : (
     <div className={clsx(styleClasses.pageBody)}>
       <Container fluid="md" className={clsx(styleClasses.formContainer)}>
         <Form className={clsx(styleClasses.form)}>
