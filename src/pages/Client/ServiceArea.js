@@ -21,12 +21,12 @@ const styleClasses = Object.freeze({
 export default function ServiceArea() {
   const [services, setServices] = useState([]);
 
-  const getServices = async () => {
-    const response = await httpClient.endpoints.services.list.get();
-    setServices(response.data);
-  };
-
   useEffect(() => {
+    const getServices = async () => {
+      const response = await httpClient.endpoints.services.list.get();
+      setServices(response.data);
+    };
+
     getServices();
   }, []);
 

@@ -9,6 +9,7 @@ import House from "./House";
 import Users from "./Users";
 import BuildingUser from "./BuildingUser";
 import Newspaper from "./Newspaper";
+import List from "./List";
 
 const Icons = Object.freeze({
   Eye,
@@ -22,6 +23,7 @@ const Icons = Object.freeze({
   Users,
   BuildingUser,
   Newspaper,
+  List,
 });
 
 export default Icons;

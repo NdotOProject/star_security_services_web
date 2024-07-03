@@ -15,6 +15,7 @@ export default function Dashboard() {
   const [clients, setClients] = useState([]);
   const [employees, setEmployees] = useState([]);
   const [recruitmentNewsList, setRecruitmentNewsList] = useState([]);
+  const [services, setServices] = useState([]);
 
   useEffect(() => {
     const getClients = async () => {
@@ -29,6 +30,12 @@ export default function Dashboard() {
       setEmployees(response.data);
     };
 
+    const getServices = async () => {
+      const response = await httpClient.endpoints.services.list.get();
+
+      setServices(response.data);
+    };
+
     const getRecruitmentNews = async () => {
       const response = await httpClient.endpoints.recruitments.list.get();
 
@@ -37,6 +44,7 @@ export default function Dashboard() {
 
     getClients();
     getEmployees();
+    getServices();
     getRecruitmentNews();
   }, []);
 
@@ -57,23 +65,34 @@ export default function Dashboard() {
           </div>
           <div className={clsx("item")}>
             <Link
-              to={routes.admin.employees}
-              className={clsx("content-container")}
-            >
-              <div className={clsx("content")}>
-                <Icons.BuildingUser className={clsx("icon")} />
-                <span>{employees.length} Employees</span>
-              </div>
-            </Link>
-          </div>
-          <div className={clsx("item")}>
-            <Link
               to={routes.admin.recruitmentNews}
               className={clsx("content-container")}
             >
               <div className={clsx("content")}>
                 <Icons.Newspaper className={clsx("icon")} />
                 <span>{recruitmentNewsList.length} Recruitment News</span>
+              </div>
+            </Link>
+          </div>
+          <div className={clsx("item")}>
+            <Link
+              to={routes.admin.services}
+              className={clsx("content-container")}
+            >
+              <div className={clsx("content")}>
+                <Icons.Users className={clsx("icon")} />
+                <span>{services.length} Services</span>
+              </div>
+            </Link>
+          </div>
+          <div className={clsx("item")}>
+            <Link
+              to={routes.admin.employees}
+              className={clsx("content-container")}
+            >
+              <div className={clsx("content")}>
+                <Icons.BuildingUser className={clsx("icon")} />
+                <span>{employees.length} Employees</span>
               </div>
             </Link>
           </div>
@@ -134,7 +153,6 @@ export default function Dashboard() {
                   title: "Title",
                   vacancies: "Vacancies",
                   manager: "Manager",
-                  description: "Description",
                 }}
                 content={recruitmentNewsList.map((recruitmentNews) => ({
                   key: recruitmentNews.id,

@@ -10,6 +10,7 @@ export default function Table({
   style,
   width = "100%",
   height = "fit-content",
+  onRowSelect = (row) => {},
   ...props
 }) {
   const headerTitles = Object.values(config);
@@ -43,7 +44,13 @@ export default function Table({
         <tbody>
           {content.map((row) => {
             return (
-              <tr key={row.key} className={clsx("table_row--content")}>
+              <tr
+                key={row.key}
+                className={clsx("table_row--content")}
+                onClick={() => {
+                  onRowSelect(row);
+                }}
+              >
                 {contentObjectKeys.map((key) => {
                   return (
                     <td

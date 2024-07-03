@@ -79,6 +79,42 @@ export class Endpoint {
       },
     });
   }
+
+  put(options = { pathParams: {}, body: {}, config: {} }) {
+    let url = this.url;
+
+    if (options.pathParams !== undefined) {
+      const paramKeys = Object.keys(options.pathParams);
+
+      paramKeys.forEach((key) => {
+        if (url.includes(key)) {
+          url = url.replace(`:${key}`, options.pathParams[key]);
+        }
+      });
+    }
+
+    return this.httpClient.put(url, options.body ?? {}, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
+
+  delete(options = { pathParams: {}, body: {}, config: {} }) {
+    let url = this.url;
+
+    if (options.pathParams !== undefined) {
+      const paramKeys = Object.keys(options.pathParams);
+
+      paramKeys.forEach((key) => {
+        if (url.includes(key)) {
+          url = url.replace(`:${key}`, options.pathParams[key]);
+        }
+      });
+    }
+
+    return this.httpClient.delete(url, options.body ?? {});
+  }
 }
 
 const httpClient = new HttpClient({
@@ -91,8 +127,10 @@ const httpClient = new HttpClient({
     new Endpoint("recruitments", "single", "/recruitments/:id"),
     new Endpoint("employees", "list", "/employees"),
     new Endpoint("employees", "single", "/employees/:id"),
+    new Endpoint("employees", "contracts", "/employees/:id/contracts"),
     new Endpoint("clients", "list", "/clients"),
     new Endpoint("clients", "single", "/clients/:id"),
+    new Endpoint("clients", "contracts", "/clients/:id/contracts"),
   ],
 });
 

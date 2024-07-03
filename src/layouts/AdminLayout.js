@@ -64,17 +64,6 @@ function NavigationBar({ show = true }) {
       </Link>
       {/*  */}
       <Link
-        to={routes.admin.employees}
-        className={clsx("item", {
-          active: activeItem === routes.admin.employees,
-        })}
-        onClick={() => setActiveItem(routes.admin.employees)}
-      >
-        <Icons.BuildingUser className={clsx("icon")} />
-        {show && <span>Employee</span>}
-      </Link>
-      {/*  */}
-      <Link
         to={routes.admin.clients}
         className={clsx("item", {
           active: activeItem === routes.admin.clients,
@@ -82,7 +71,29 @@ function NavigationBar({ show = true }) {
         onClick={() => setActiveItem(routes.admin.clients)}
       >
         <Icons.Users className={clsx("icon")} />
-        {show && <span>Client</span>}
+        {show && <span>Clients</span>}
+      </Link>
+      {/*  */}
+      <Link
+        to={routes.admin.employees}
+        className={clsx("item", {
+          active: activeItem === routes.admin.employees,
+        })}
+        onClick={() => setActiveItem(routes.admin.employees)}
+      >
+        <Icons.BuildingUser className={clsx("icon")} />
+        {show && <span>Employees</span>}
+      </Link>
+      {/*  */}
+      <Link
+        to={routes.admin.services}
+        className={clsx("item", {
+          active: activeItem === routes.admin.services,
+        })}
+        onClick={() => setActiveItem(routes.admin.services)}
+      >
+        <Icons.List className={clsx("icon")} />
+        {show && <span>Services</span>}
       </Link>
       {/*  */}
       <Link

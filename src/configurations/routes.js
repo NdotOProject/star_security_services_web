@@ -6,10 +6,15 @@ const routes = {
   },
   admin: {
     home: "/admin",
-    login: "/login",
+    login: "/admin/login",
     employees: "/admin/employees",
+    employeeDetail: "/admin/employees/:id",
     clients: "/admin/clients",
-    recruitmentNews: "/admin/recruitmentNews",
+    clientDetail: "/admin/clients/:id",
+    recruitmentNews: "/admin/recruitment-news",
+    recruitmentNewsDetail: "/admin/recruitment-news/:id",
+    services: "/admin/services",
+    serviceDetail: "/admin/services/:id",
   },
 };
 
