@@ -1,7 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 //
-import "./App.css";
-//
 import { Fragment } from "react";
 //
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";

@@ -121,7 +121,7 @@ const httpClient = new HttpClient({
   baseURL: "https://localhost:44360/api/",
   endpoints: [
     new Endpoint("services", "list", "/services"),
-    new Endpoint("services", "detail", "/services/:id"),
+    new Endpoint("services", "single", "/services/:id"),
     new Endpoint("auth", "login", "/auth/login"),
     new Endpoint("recruitments", "list", "/recruitments"),
     new Endpoint("recruitments", "single", "/recruitments/:id"),

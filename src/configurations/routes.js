@@ -1,7 +1,8 @@
 const routes = {
   client: {
     home: "/",
-    serviceDetail: "/services/:serviceName",
+    services: "/#services",
+    serviceDetail: "/services/:id",
     recruitmentNews: "/recruitment-news",
   },
   admin: {
@@ -15,6 +16,8 @@ const routes = {
     recruitmentNewsDetail: "/admin/recruitment-news/:id",
     services: "/admin/services",
     serviceDetail: "/admin/services/:id",
+    contracts: "/admin/contracts",
+    contractDetail: "/admin/contracts/:id",
   },
 };
 

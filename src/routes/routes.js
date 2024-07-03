@@ -1,42 +1,43 @@
 //
 import routes from "../configurations/routes";
 //
-import DefaultLayout from "../layouts/DefaultLayout";
-import AdminLayout from "../layouts/AdminLayout";
-import Login from "../pages/Admin/Login/Page";
-import Home from "../pages/Client/Page";
-import RecruitmentNews from "../pages/Client/RecruitmentNews/RecruitmentNews";
-import ServiceDetail from "../pages/Client/Services/ServiceDetail";
+import { default as ClientLayout } from "../app/layout";
+import { default as ClientHome } from "../app/page";
+import { default as ClientRecruitmentNewsList } from "../app/recruitment-news/page";
+import { default as ServiceDetail } from "../app/services/[id]/page";
 //
-import Dashboard from "../pages/Admin/Page";
-import { default as ClientList } from "../pages/Admin/Clients/Page";
-import { default as EmployeeList } from "../pages/Admin/Employees/Page";
-import { default as RecruitmentNewsList } from "../pages/Admin/RecruitmentNews/Page";
-import { default as ServicesList } from "../pages/Admin/Services/Page";
+import { default as LoginPage } from "../app/admin/login/page";
+import { default as AdminLayout } from "../app/admin/layout";
+import { default as AdminDashboard } from "../app/admin/page";
+import { default as ClientList } from "../app/admin/clients/page";
+import { default as ContractList } from "../app/admin/contracts/page";
+import { default as EmployeeList } from "../app/admin/employees/page";
+import { default as RecruitmentNewsList } from "../app/admin/recruitment-news/page";
+import { default as ServicesList } from "../app/admin/services/page";
 
 const publicRoutes = {
   home: {
     path: routes.client.home,
-    component: Home,
-    layout: DefaultLayout,
+    component: ClientHome,
+    layout: ClientLayout,
   },
   services: {
     path: routes.client.serviceDetail,
     component: ServiceDetail,
-    layout: DefaultLayout,
+    layout: ClientLayout,
   },
   recruitmentNews: {
     path: routes.client.recruitmentNews,
-    component: RecruitmentNews,
-    layout: DefaultLayout,
+    component: ClientRecruitmentNewsList,
+    layout: ClientLayout,
   },
   login: {
     path: routes.admin.login,
-    component: Login,
+    component: LoginPage,
   },
   adminHome: {
     path: routes.admin.home,
-    component: Dashboard,
+    component: AdminDashboard,
     layout: AdminLayout,
   },
   adminEmployees: {
@@ -57,6 +58,11 @@ const publicRoutes = {
   adminServices: {
     path: routes.admin.services,
     component: ServicesList,
+    layout: AdminLayout,
+  },
+  adminContracts: {
+    path: routes.admin.contracts,
+    component: ContractList,
     layout: AdminLayout,
   },
 };
