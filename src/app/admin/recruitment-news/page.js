@@ -58,7 +58,7 @@ export default function Page() {
     <Authenticated>
       <div className="page_container">
         <div className="page_header">
-          <span>RecruitmentNews</span>
+          <span>Recruitment News</span>
         </div>
         <div className="page_body">
           {role === "24722a9d-ad40-4324-a044-50825421cc6c" && (
@@ -209,10 +209,10 @@ export default function Page() {
                     disabled={recruitmentNews === emptyRecruitmentNews}
                     onClick={() => {
                       if (
-                        recruitmentNews.title.error === "" &&
-                        recruitmentNews.vacancies.error === "" &&
-                        recruitmentNews.managerId.error === "" &&
-                        recruitmentNews.description.error === ""
+                        recruitmentNews.title.value !== "" &&
+                        recruitmentNews.vacancies.value !== "" &&
+                        recruitmentNews.managerId.value !== "" &&
+                        recruitmentNews.description.value !== ""
                       ) {
                         endpoint.list
                           .post({
@@ -243,6 +243,7 @@ export default function Page() {
             </div>
           )}
           <Table
+            height="70vh"
             config={{
               id: "Id",
               title: "Title",

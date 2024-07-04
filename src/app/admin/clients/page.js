@@ -177,9 +177,9 @@ export default function Page() {
                     disabled={client === emptyClient}
                     onClick={() => {
                       if (
-                        client.email.error === "" &&
-                        client.name.error === "" &&
-                        client.phoneNumber.error === ""
+                        client.email.value !== "" &&
+                        client.name.value !== "" &&
+                        client.phoneNumber.value !== ""
                       ) {
                         if (client.id === undefined) {
                           endpoint.list
@@ -251,6 +251,7 @@ export default function Page() {
             </div>
           )}
           <Table
+            height="70vh"
             config={{
               id: "Id",
               name: "Name",

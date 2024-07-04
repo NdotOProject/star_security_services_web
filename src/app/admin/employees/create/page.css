@@ -1,0 +1,13 @@
+.page_container .page_body .form_container.form-employee {
+
+    width: 100%;
+}
+
+.page_container .page_body .form_container.form-employee .basic_info_section .basic_info,
+.page_container .page_body .form_container.form-employee .basic_info_section .more_info,
+.page_container .page_body .form_container.form-employee .department_info_section,
+.page_container .page_body .form_container.form-employee .account_info_section {
+    display: flex;
+    column-gap: 10px;
+}
+

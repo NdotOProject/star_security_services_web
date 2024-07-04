@@ -1,0 +1,12 @@
+.page_container .page_body .form_container.form_contract {
+    width: 100%;
+}
+
+.page_container .page_body .form_container.form_contract .checkbox_section {
+    display: flex;
+    column-gap: 20px;
+}
+
+.page_container .page_body .form_container.form_contract .checkbox_section .mb-3 {
+    width: 100%;
+}

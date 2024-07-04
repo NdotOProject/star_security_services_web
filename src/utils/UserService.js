@@ -12,7 +12,7 @@ export class UserService {
   getUserRoleId() {
     const user = this.getUser();
 
-    return user.role.id;
+    return user?.role.id;
   }
 }
 

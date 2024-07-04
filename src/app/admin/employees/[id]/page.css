@@ -1,0 +1,7 @@
+.employee_detail_page {
+    flex-direction: column;
+}
+
+.page_container.achievement_container {
+    width: 100%;
+}

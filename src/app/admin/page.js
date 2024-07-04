@@ -19,7 +19,6 @@ export default function Page() {
   const [clients, setClients] = useState([]);
   const [employees, setEmployees] = useState([]);
   const [recruitmentNewsList, setRecruitmentNewsList] = useState([]);
-  // const [services, setServices] = useState([]);
   const [contracts, setContracts] = useState([]);
 
   useEffect(() => {
@@ -35,22 +34,24 @@ export default function Page() {
       setEmployees(response.data);
     };
 
-    // const getServices = async () => {
-    //   const response = await httpClient.endpoints.services.list.get();
-
-    //   setServices(response.data);
-    // };
-
     const getContracts = async () => {
       const user = userService.getUser();
 
-      const response = await httpClient.endpoints.employees.contracts.get({
-        pathParams: {
-          id: user.id,
-        },
-      });
+      if (user ?? false) {
+        if (user.role.id === "24722a9d-ad40-4324-a044-50825421cc6c") {
+          const response = await httpClient.endpoints.contracts.list.get();
 
-      setContracts(response.data);
+          setContracts(response.data);
+        } else {
+          const response = await httpClient.endpoints.employees.contracts.get({
+            pathParams: {
+              id: user.id,
+            },
+          });
+
+          setContracts(response.data);
+        }
+      }
     };
 
     const getRecruitmentNews = async () => {
@@ -61,7 +62,6 @@ export default function Page() {
 
     getClients();
     getEmployees();
-    // getServices();
     getRecruitmentNews();
     getContracts();
   }, []);
@@ -117,17 +117,6 @@ export default function Page() {
               </div>
             </Link>
           </div>
-          {/* <div className={clsx("item")}>
-            <Link
-              to={routes.admin.services}
-              className={clsx("content-container")}
-            >
-              <div className={clsx("content")}>
-                <Icons.List className={clsx("icon")} />
-                <span>{services.length} Services</span>
-              </div>
-            </Link>
-          </div> */}
         </div>
         {/*  */}
         <div className={clsx("detail-list-container")}>
@@ -140,8 +129,8 @@ export default function Page() {
               <Table
                 height="calc(100% - 50px)"
                 config={{
-                  email: "Email",
                   name: "Name",
+                  email: "Email",
                   phoneNumber: "Phone Number",
                 }}
                 content={clients.map((client) => ({
@@ -160,16 +149,16 @@ export default function Page() {
                 config={{
                   code: "Code",
                   name: "Name",
-                  department: "Department",
-                  address: "Address",
                   contactNumber: "Contact Number",
+                  branch: "Branch",
+                  department: "Department",
                 }}
                 content={employees.map((employee) => ({
                   key: employee.id,
                   code: employee.code,
                   name: employee.name,
                   department: employee.department.name,
-                  address: employee.address,
+                  branch: employee.department.branch.name,
                   contactNumber: employee.contactNumber,
                 }))}
               />
@@ -189,6 +178,7 @@ export default function Page() {
                   services: "Services",
                 }}
                 content={contracts.map((e) => ({
+                  key: e.id,
                   client: e.client.name,
                   employees: e.employees.map((e) => e.name).join(", "),
                   services: e.services.map((e) => e.name).join(", "),

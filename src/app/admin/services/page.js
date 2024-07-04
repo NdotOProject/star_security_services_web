@@ -135,8 +135,8 @@ export default function Page() {
                     disabled={service === emptyService}
                     onClick={() => {
                       if (
-                        service.name.error === "" &&
-                        service.description.error === ""
+                        service.name.value !== "" &&
+                        service.description.value !== ""
                       ) {
                         if (service.id === undefined) {
                           endpoint.list
@@ -205,6 +205,7 @@ export default function Page() {
             </div>
           )}
           <Table
+            height="70vh"
             config={{
               id: "Id",
               name: "Name",

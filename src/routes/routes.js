@@ -11,7 +11,10 @@ import { default as AdminLayout } from "../app/admin/layout";
 import { default as AdminDashboard } from "../app/admin/page";
 import { default as ClientList } from "../app/admin/clients/page";
 import { default as ContractList } from "../app/admin/contracts/page";
+import { default as ContractCreate } from "../app/admin/contracts/create/page";
 import { default as EmployeeList } from "../app/admin/employees/page";
+import { default as CreateEmployeePage } from "../app/admin/employees/create/page";
+import { default as EmployeeDetail } from "../app/admin/employees/[id]/page";
 import { default as RecruitmentNewsList } from "../app/admin/recruitment-news/page";
 import { default as ServicesList } from "../app/admin/services/page";
 
@@ -45,6 +48,16 @@ const publicRoutes = {
     component: EmployeeList,
     layout: AdminLayout,
   },
+  adminEmployeeCreate: {
+    path: routes.admin.employeeCreate,
+    component: CreateEmployeePage,
+    layout: AdminLayout,
+  },
+  adminEmployeeDetail: {
+    path: routes.admin.employeeDetail,
+    component: EmployeeDetail,
+    layout: AdminLayout,
+  },
   adminClients: {
     path: routes.admin.clients,
     component: ClientList,
@@ -63,6 +76,11 @@ const publicRoutes = {
   adminContracts: {
     path: routes.admin.contracts,
     component: ContractList,
+    layout: AdminLayout,
+  },
+  adminContractCreate: {
+    path: routes.admin.contractCreate,
+    component: ContractCreate,
     layout: AdminLayout,
   },
 };
