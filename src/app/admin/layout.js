@@ -1,13 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowRightFromBracket,
+  faFileContract,
+} from "@fortawesome/free-solid-svg-icons";
 import clsx from "clsx";
 
 import Logo from "../../components/logo/Logo";
 import Icons from "../../components/icons/Icons";
 
-import { Link } from "react-router-dom";
 import routes from "../../configurations/routes";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFileContract } from "@fortawesome/free-solid-svg-icons";
+import userService from "../../utils/UserService";
 
 import "./layout.css";
 
@@ -46,6 +51,8 @@ export default function Layout({ children }) {
 }
 
 function NavigationBar({ show = true }) {
+  const navigate = useNavigate();
+
   const [activeItem, setActiveItem] = useState(window.location.pathname);
 
   return (
@@ -55,71 +62,86 @@ function NavigationBar({ show = true }) {
         collapsed: !show,
       })}
     >
-      <Link
-        to={routes.admin.home}
-        className={clsx("item", {
-          active: activeItem === routes.admin.home,
-        })}
-        onClick={() => setActiveItem(routes.admin.home)}
-      >
-        <Icons.House className={clsx("icon")} />
-        {show && <span>Dashboard</span>}
-      </Link>
-      {/*  */}
-      <Link
-        to={routes.admin.clients}
-        className={clsx("item", {
-          active: activeItem === routes.admin.clients,
-        })}
-        onClick={() => setActiveItem(routes.admin.clients)}
-      >
-        <Icons.Users className={clsx("icon")} />
-        {show && <span>Clients</span>}
-      </Link>
-      {/*  */}
-      <Link
-        to={routes.admin.contracts}
-        className={clsx("item", {
-          active: activeItem === routes.admin.contracts,
-        })}
-        onClick={() => setActiveItem(routes.admin.contracts)}
-      >
-        <FontAwesomeIcon icon={faFileContract} className={clsx("icon")} />
-        {show && <span>Contracts</span>}
-      </Link>
-      {/*  */}
-      <Link
-        to={routes.admin.recruitmentNews}
-        className={clsx("item", {
-          active: activeItem === routes.admin.recruitmentNews,
-        })}
-        onClick={() => setActiveItem(routes.admin.recruitmentNews)}
-      >
-        <Icons.Newspaper className={clsx("icon")} />
-        {show && <span>Recruitment News</span>}
-      </Link>
-      {/*  */}
-      <Link
-        to={routes.admin.services}
-        className={clsx("item", {
-          active: activeItem === routes.admin.services,
-        })}
-        onClick={() => setActiveItem(routes.admin.services)}
-      >
-        <Icons.List className={clsx("icon")} />
-        {show && <span>Services</span>}
-      </Link>
-      {/*  */}
-      <Link
-        to={routes.admin.employees}
-        className={clsx("item", {
-          active: activeItem === routes.admin.employees,
-        })}
-        onClick={() => setActiveItem(routes.admin.employees)}
-      >
-        <Icons.BuildingUser className={clsx("icon")} />
-        {show && <span>Employees</span>}
-      </Link>
+      <div>
+        <Link
+          to={routes.admin.home}
+          className={clsx("item", {
+            active: activeItem === routes.admin.home,
+          })}
+          onClick={() => setActiveItem(routes.admin.home)}
+        >
+          <Icons.House className={clsx("icon")} />
+          {show && <span>Dashboard</span>}
+        </Link>
+        {/*  */}
+        <Link
+          to={routes.admin.clients}
+          className={clsx("item", {
+            active: activeItem === routes.admin.clients,
+          })}
+          onClick={() => setActiveItem(routes.admin.clients)}
+        >
+          <Icons.Users className={clsx("icon")} />
+          {show && <span>Clients</span>}
+        </Link>
+        {/*  */}
+        <Link
+          to={routes.admin.contracts}
+          className={clsx("item", {
+            active: activeItem === routes.admin.contracts,
+          })}
+          onClick={() => setActiveItem(routes.admin.contracts)}
+        >
+          <FontAwesomeIcon icon={faFileContract} className={clsx("icon")} />
+          {show && <span>Contracts</span>}
+        </Link>
+        {/*  */}
+        <Link
+          to={routes.admin.recruitmentNews}
+          className={clsx("item", {
+            active: activeItem === routes.admin.recruitmentNews,
+          })}
+          onClick={() => setActiveItem(routes.admin.recruitmentNews)}
+        >
+          <Icons.Newspaper className={clsx("icon")} />
+          {show && <span>Recruitment News</span>}
+        </Link>
+        {/*  */}
+        <Link
+          to={routes.admin.services}
+          className={clsx("item", {
+            active: activeItem === routes.admin.services,
+          })}
+          onClick={() => setActiveItem(routes.admin.services)}
+        >
+          <Icons.List className={clsx("icon")} />
+          {show && <span>Services</span>}
+        </Link>
+        {/*  */}
+        <Link
+          to={routes.admin.employees}
+          className={clsx("item", {
+            active: activeItem === routes.admin.employees,
+          })}
+          onClick={() => setActiveItem(routes.admin.employees)}
+        >
+          <Icons.BuildingUser className={clsx("icon")} />
+          {show && <span>Employees</span>}
+        </Link>
+      </div>
+      <div>
+        <Button
+          className="item"
+          variant="text"
+          onClick={() => {
+            userService.logout();
+            navigate(routes.admin.login);
+          }}
+        >
+          <FontAwesomeIcon icon={faArrowRightFromBracket} />
+          {show && <span>Log out</span>}
+        </Button>
+      </div>
     </div>
   );
 }

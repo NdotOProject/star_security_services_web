@@ -14,6 +14,10 @@ export class UserService {
 
     return user?.role.id;
   }
+
+  logout() {
+    localStorage.removeItem("user");
+  }
 }
 
 const userService = new UserService();

@@ -9,7 +9,7 @@ import "./AboutUsArea.css";
 export default function AboutUsArea() {
   return (
     <Row id="about-us" className={clsx("about-us-container")}>
-      <Col md={6}>
+      <Col lg={6}>
         <div className={clsx("title-container")}>
           <span>
             We Are <span className={clsx("company-name-highlight")}>Star</span>
@@ -75,7 +75,7 @@ export default function AboutUsArea() {
           efficitur, quis dapibus arcu ultricies.
         </div>
       </Col>
-      <Col md={6}>
+      <Col lg={6}>
         <img className={clsx("company-image")} src={images.photo4} alt="" />
       </Col>
     </Row>

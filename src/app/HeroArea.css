@@ -1,121 +1,47 @@
-.hero-area-container {
+.hero_area--container {
     padding-top: var(--header-height);
     width: 100%;
     height: 100vh;
+    background-color: white;
+    overflow: hidden;
 }
 
-.hero-area {
-    --shadow-color: rgba(30, 40, 30, 0.5);
-    --hero-bg-color: rgba(210, 210, 210, 0.3);
-
-    position: relative;
+.hero_area--container .hero_area .text_content--container,
+.hero_area--container .hero_area .images--container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    background-color: var(--hero-bg-color);
-    height: calc(100vh - var(--header-height));
+    justify-content: center;
+    gap: 10px;
 }
 
-.hero-area img {
-    position: absolute;
-    border: 2px solid black;
-    border-radius: 10px;
+.hero_area--container .hero_area .text_content--container .text_content--header {
+    font-weight: 700;
+    font-size: 34px;
 }
 
-.hero-area .img-large {
-    width: 70%;
-    height: 80%;
-    bottom: 10%;
-    box-shadow: 0 5px 5px var(--shadow-color);
+.hero_area--container .hero_area .text_content--container .text_content--body {
+    width: 100%;
+    text-align: center;
 }
 
-.hero-area .img-big {
-    width: 20%;
-    height: 30%;
-    top: 5%;
-}
-
-.hero-area .img-big.left {
-    left: 2.5%;
-    box-shadow: -5px -5px 5px var(--shadow-color);
-}
-
-.hero-area .img-big.right {
-    right: 2.5%;
-    box-shadow: 5px -5px 5px var(--shadow-color);
-}
-
-.hero-area .img-small {
-    width: 15%;
-    height: 20%;
-    bottom: 5%;
-}
-
-.hero-area .img-small.left {
-    left: 10%;
-    box-shadow: -5px 5px 5px var(--shadow-color);
-}
-
-.hero-area .img-small.right {
-    right: 10%;
-    box-shadow: 5px 5px 5px var(--shadow-color);
-}
-
-.hero-area .text-content-container {
-    position: absolute;
-    width: 50%;
+.hero_area--container .hero_area .images--container .images--top,
+.hero_area--container .hero_area .images--container .images--bottom {
     height: 50%;
     display: flex;
+    gap: 10px;
 }
 
-.hero-area .text-content-container .text-bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(30, 30, 30, 0.7);
-    border-radius: 20px;
-    border: 1px;
+.hero_area--container .hero_area .images--container .images--top {
+    align-items: end;
 }
 
-.hero-area .text-content-container .content-area {
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
+.hero_area--container .hero_area .images--container img.img-big{
+    width: 90%;
+    height: 90%;
 }
 
-.hero-area .text-content-container .content-area .title {
-    height: 30%;
-    width: 100%;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.hero-area .text-content-container .content-area .title span {
-    font-weight: 700;
-    font-size: 30px;
-    color: white;
-}
-
-.hero-area .text-content-container .content-area .text {
-    color: white;
-    font-size: 14px;
-    height: 70%;
-    overflow-y: scroll;
-    padding-right: 5px;
-}
-
-.hero-area .text-content-container .content-area .text::-webkit-scrollbar {
-    width: 10px;
-}
-
-.hero-area .text-content-container .content-area .text::-webkit-scrollbar-track {
-    background: rgba(190, 190, 190, 0.5);
-    border-radius: 5px;
-}
-
-.hero-area .text-content-container .content-area .text::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background: white;
+.hero_area--container .hero_area .images--container img.img-small {
+    width: 75%;
+    height: 75%;
 }

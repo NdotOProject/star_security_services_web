@@ -65,11 +65,11 @@ export default function Layout({ children, activeLink: currentLink }) {
                   Home
                 </Nav.Link>
                 <Nav.Link
-                  href={routes.client.services}
+                  href={"#services"}
                   onClick={() => {
-                    setActiveLink(routes.client.services);
+                    setActiveLink("#services");
                   }}
-                  active={activeLink === routes.client.services}
+                  active={activeLink === "#services"}
                 >
                   Services
                 </Nav.Link>
