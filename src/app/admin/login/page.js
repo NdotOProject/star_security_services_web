@@ -152,6 +152,9 @@ function CodeInput({ onChange, value = "", error = "" }) {
           className={clsx(styleClasses.formControl)}
           onChange={handleOnChange}
           value={value}
+          onFocus={() => {
+            setActiveInput(true);
+          }}
         />
       </Form.Group>
       <span className={clsx(styleClasses.error)}>{error}</span>
@@ -212,6 +215,9 @@ function PasswordInput({ onChange = (value) => {}, value = "", error = "" }) {
           type={showPassword ? "text" : "password"}
           className={clsx(styleClasses.formControl)}
           onChange={handleOnChange}
+          onFocus={() => {
+            setActiveInput(true);
+          }}
           value={value}
         />
         <Button
